@@ -56,17 +56,14 @@ struct PlantMapView: View {
                         .font(.system(size: 20))
                         .padding(.top,5)
                         .padding(.bottom,-5)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.gray)
                     HStack{
                         ScrollView(.horizontal){
                             HStack(spacing:0){
-                                buyitem(itemname: "p1")
-                                buyitem(itemname: "p2")
-                                buyitem(itemname: "p3")
-                                buyitem(itemname: "p4")
-                                buyitem(itemname: "p5")
-                                buyitem(itemname: "p6")
-                                buyitem(itemname: "p7")
+                                goodsItem(str1: "绿萝盆栽植物花卉水培盆景观花绿植室内吸甲醛净化空气大绿箩包邮", imgname: "img4", price: 5.79, cardtype: 2, myurl: "https://m.tb.cn/h.4nMeEvp?sm=0d9111")
+                                goodsItem(str1: "万年青盆栽植物粉黛银皇后室内好养绿植办公室四季常青水培小植物", imgname: "img3", price: 32.8, cardtype: 2, myurl: "https://m.tb.cn/h.4mB4wVu?sm=e6357e")
+                                goodsItem(str1: "雾松绿植意境盆栽室内植物常春藤盆景万年青好养活四季办公室雾凇", imgname: "img1", price: 14.9, cardtype: 2, myurl: "https://m.tb.cn/h.4MSqkpe?sm=185711")
+                                goodsItem(str1: "广东万年青水养花卉绿植盆栽新房装修吸甲醛净化空气四季常青树苗", imgname: "img2", price: 6.5, cardtype: 2, myurl: "https://m.tb.cn/h.4MSIFsG?sm=4dd498")
                             }
                         }
                         

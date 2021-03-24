@@ -9,11 +9,12 @@ import SwiftUI
 
 
 var getget = [String:String]()
-
+var getget2 = [String:String]()
 struct textView: View {
     @State var name:String="test1"
     @State var str:String="test"
     @State var url:String="temp"
+    
     var body: some View {
         ScrollView{
             VStack{
@@ -38,47 +39,40 @@ struct textView: View {
                     }
                 )
                 VStack{
-                    Text("植物简介")
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
-                        .foregroundColor(.gray)
-                        .lineSpacing(8)
-                        .padding(.top,15)
-                        .shadow(radius: 30)
-                    Text(str)
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
-                        .padding()
-                        .foregroundColor(.gray)
-                        .lineSpacing(8)
-                        .shadow(radius: 30)
+                    detail(ismyshow:true,mycolor: Color.blue,mytitle:"植物简介",mydetail:str)
+                    if let str3=getget2[name]{
+                        VStack{
+                            detail(mycolor: Color.purple,mytitle:"养殖方式",mydetail:str3)
+                        }
+                    }
                     if let str2=getget[name]{
                         VStack{
-                            Text("病虫害防治")
-                                .fontWeight(.bold)
-                                .font(.system(size: 20))
-                                .padding(.top)
-                                //.foregroundColor(.gray)
-                                .lineSpacing(8)
-                                .shadow(radius: 30)
-                            Text(str2)
-                                .fontWeight(.bold)
-                                .font(.system(size: 20))
-                                .padding()
-                                //.foregroundColor(.gray)
-                                .lineSpacing(8)
-                                .shadow(radius: 30)
+                            detail(mycolor: Color.red,mytitle:"病虫害防治",mydetail:str2)
                         }
-                        .background(Color.orange)
-                        .foregroundColor(.white)
-                        .cornerRadius(15)
                     }
                     Spacer(minLength: 20)
                 }
-                .frame(width: 370)
+                //.padding(50)
+                //.frame(width: 380)
             }
         }
     }
+}
+func filldata2(){
+    getget2["万年青"] =
+    """
+    1、土壤：万年青喜欢温润的土壤，养殖时，一定不能使用比较硬的粘土和碱土，最好可以采用加有腐叶土的砂土。
+    2、光照：它需要适量自然光照射，但是不喜强光，所以在中午需要给它适当遮阴，其他时间可以不做处理。
+    3、浇水：它的根系是肉质根系，最怕涝，所以浇水的时候不能太多，避免盆里有积水，浇的次数要勤，盆土一干就要浇水。
+    4、施肥：一个月两次左右就可以了，施肥要施薄肥，因为万年青根系脆弱敏感，施肥不能施浓肥。
+    """
+    getget2["花叶万年青"] =
+    """
+    1、土壤：万年青喜欢温润的土壤，养殖时，一定不能使用比较硬的粘土和碱土，最好可以采用加有腐叶土的砂土。
+    2、光照：它需要适量自然光照射，但是不喜强光，所以在中午需要给它适当遮阴，其他时间可以不做处理。
+    3、浇水：它的根系是肉质根系，最怕涝，所以浇水的时候不能太多，避免盆里有积水，浇的次数要勤，盆土一干就要浇水。
+    4、施肥：一个月两次左右就可以了，施肥要施薄肥，因为万年青根系脆弱敏感，施肥不能施浓肥。
+    """
 }
 
 func filldata() {
@@ -113,7 +107,13 @@ func filldata() {
     """
     getget["花叶万年青"] =
     """
-    主要有细菌性叶斑病、褐斑病和炭疽病危害，可用50%多菌灵可湿性粉剂500倍液喷洒。有时发生根腐病和茎腐病危害，除注意通风和减少湿度外，可用75%百菌清可湿性粉剂800倍液喷洒防治。
+    主要有细菌性叶斑病、褐斑病和炭疽病危害，可用50%多菌灵可湿性粉剂500倍液喷洒,或0.5%到1%的波尔多液就可以了。有时发生根腐病和茎腐病危害，除注意通风和减少湿度外，可用75%百菌清可湿性粉剂800倍液喷洒防治。
+    如果土壤也感染了虫害，就要给它换土，换土后注意观察万年青的状态，防止再次感染。
+    """
+    getget["万年青"] =
+    """
+    主要有细菌性叶斑病、褐斑病和炭疽病危害，可用50%多菌灵可湿性粉剂500倍液喷洒,或0.5%到1%的波尔多液就可以了。有时发生根腐病和茎腐病危害，除注意通风和减少湿度外，可用75%百菌清可湿性粉剂800倍液喷洒防治。
+    如果土壤也感染了虫害，就要给它换土，换土后注意观察万年青的状态，防止再次感染。
     """
     getget["龙葵"] =
     """

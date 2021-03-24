@@ -19,7 +19,8 @@ struct nav_root: View {
                 }else if index==1{
                     PlantMapView()
                 }else if index==2{
-                    tab3()
+                    storeView()
+                    //tab3()
                 }else if index==3{
                     tab4()
                 }
@@ -31,6 +32,7 @@ struct nav_root: View {
             model.locationManager.delegate=model.mapmodel
             model.locationManager.requestWhenInUseAuthorization()
             filldata()
+            filldata2()
         })
     }
 }
@@ -41,7 +43,7 @@ struct TabBar:View {
         HStack(spacing:15){
             TabBarItem(index: $index, myindex: 0, iconName: "magnifyingglass.circle.fill", myName: "识花",mycolor:Color.green)
             TabBarItem(index: $index, myindex: 1, iconName: "map.fill", myName: "附近植物",mycolor:Color.blue)
-            TabBarItem(index: $index, myindex: 2, iconName: "hands.sparkles.fill", myName: "猜你喜欢",mycolor:Color.purple)
+            TabBarItem(index: $index, myindex: 2, iconName: "hands.sparkles.fill", myName: "商城",mycolor:Color.purple)
             TabBarItem(index: $index, myindex: 3, iconName: "person.fill", myName: "我的",mycolor:Color.yellow)
         }
         .padding(.bottom,8)
