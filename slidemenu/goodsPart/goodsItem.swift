@@ -12,10 +12,11 @@ struct goodsItem: View {
     @State var show=false
     var str1:String
     var imgname:String
-    var price:Double
+    var price:Double?=nil
+    var tag:String?=nil
     var cardtype:Int=1
     var myurl:String="https://market.m.taobao.com/app/idleFish-F2e/widle-taobao-rax/page-detail?wh_weex=true&wx_navbar_transparent=true&id=640442218133&ut_sk=1.XvMoJ394MxUDAL2MITSPwpf3_12431167_1616569247404.Copy.detail.640442218133.3981487602&forceFlush=1"
-    
+    var issp = false
     var body: some View {
         VStack{
             if cardtype == 1{
@@ -30,14 +31,40 @@ struct goodsItem: View {
                             .padding(10)
                         Spacer()
                         VStack{
-                            Text(str1)
-                                .lineLimit(2)
+                            HStack{
+                                Text(str1)
+                                    .lineLimit(2)
+                                    .padding(.leading,5)
+                                Spacer()
+                            }
+                            
                             Spacer(minLength: 5)
                             HStack{
-                                Text("¥"+String(format: "%.2f", price))
-                                    .bold()
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.red)
+                                if let temp = tag{
+                                    Text(temp)
+                                        .bold()
+                                        .font(.system(size: 20))
+                                        //.foregroundColor(.red)
+                                        .padding(.leading,5)
+                                }
+                                if let temp = price{
+                                    if issp == true{
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 5)
+                                                .frame(width: 60, height: 20, alignment: .center)
+                                                .foregroundColor(.red)
+                                            Text("黑水县扶贫")
+                                                .bold()
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.white)
+                                        }
+                                    }
+                                    Text("¥"+String(format: "%.2f", temp))
+                                        .bold()
+                                        .font(.system(size: 23))
+                                        .foregroundColor(.red)
+                                        .padding(.leading,5)
+                                }
                                 Spacer()
                             }
                             .padding(.leading,5)
@@ -86,11 +113,20 @@ struct goodsItem: View {
                         .font(.system(size: 15))
                     //.padding(.top,-50)
                     HStack{
-                        Text("¥"+String(format: "%.2f", price))
-                            .bold()
-                            .font(.system(size: 15))
-                            .foregroundColor(.red)
-                            .padding(.leading,5)
+                        if let temp = tag{
+                            Text(temp)
+                                .bold()
+                                .font(.system(size: 14))
+                                //.foregroundColor(.red)
+                                .padding(.leading,5)
+                        }
+                        if let temp = price{
+                            Text("¥"+String(format: "%.2f", temp))
+                                .bold()
+                                .font(.system(size: 15))
+                                .foregroundColor(.red)
+                                .padding(.leading,5)
+                        }
                         Spacer()
                     }
                     //.padding(.top,-30)
